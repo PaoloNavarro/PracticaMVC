@@ -1,8 +1,108 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+@{
+    IEnumerable<string> strList = new List<string> { "POO", "TW", "MAT3", "FIS1" };
+}
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container">
+    <h1 class="mt-5">Helper</h1>
+    <hr />
+
+    <!--<p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>-->
+        <div class="form-group row mt-4">
+        <div class="col-md-4">
+            @Html.Label("Nombre", null, new { style = "font-weight:bold;" })
+        </div>
+
+            <div class="col-md-4">
+                @Html.TextBox("txtUserName", "", new { @class = "form-control" })
+            </div>
+        </div>
+    <div class="row pt-2">
+        <div class="col-md-4">
+            @Html.Label("Contraseña", null, new { style = "font-weight:bold;" })
+        </div>
+
+        <div class="col-4">
+            @Html.Password("Contrasena","", new{@class="form-control"})
+        </div>
+
+    </div>
+
+    <div class="row pt-2">
+        <div class="col-md-4">
+            @Html.Label("Genero", null, new { style = "font-weight:bold;" })
+        </div>
+
+        <div class="col-4">
+            @Html.RadioButton("Genero", "Masculino", true, new{id="masculino"})
+            Masculino
+            @Html.RadioButton("Genero", "Femenino", false, new{id="femenino"})
+            Femenino
+
+        </div>
+
+    </div>
+    <div class="row pt-2">
+        <div class="col-md-4">
+            @Html.Label("Informacion", null, new { style = "font-weight:bold;" })
+        </div>
+
+        <div class="col-4">
+            @Html.TextArea("Direccion", "Ingrese su direccion",
+            new{@class="form-control", id= "idDireccion"})
+        </div>
+
+    </div>
+    <div class="row pt-2">
+        <div class="col-md-4">
+            @Html.Label("Pasatiempos", null, new { style = "font-weight:bold;" })
+        </div>
+
+        <div class="col-4">
+
+            @Html.CheckBox("Bailando")Pasatiempo
+            @Html.CheckBox("Correr")Correr
+            @Html.CheckBox("Escalar")Escalar
+            @Html.CheckBox("Pelicas")Peliculas
+        </div>
+
+    </div>
+    <div class="row pt-2">
+        <div class="col-md-4">
+            @Html.Label("Cursos", null, new { style = "font-weight:bold;" })
+        </div>
+
+        <div class="col-4">
+            @Html.DropDownList("ddlCurso", new SelectList(strList,
+            strList.FirstOrDefault()), "--Seleccionar curso ----" )
+        </div>
+
+    </div>
+    <div class="row pt-2">
+        <div class="col-md-4">
+            @Html.Label("Conocimientos", null, new { style = "font-weight:bold;" })
+        </div>
+
+        <div class="col-4">
+            @Html.ListBox("Seleccionar habilidades", new List<SelectListItem>{
+            new SelectListItem {Text = "C #", Value = "1"},new SelectListItem {Text = "ASP.NET", Value = "2"},
+            new SelectListItem {Text = "ASP.NET Core", Value = "3"},
+            new SelectListItem {Text = "Azure", Value = "4"}
+            })
+
+        </div>
+
+    </div>
+    <div class="row pt-2">
+        <hr />
+        <div class="offset-sm-4 col-sm-4">
+            <button type="button" class="btn btn-success form-control">Enviar datos</button>
+        </div>
+
+    </div>
+
+
+
 </div>
